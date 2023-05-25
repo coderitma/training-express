@@ -2,6 +2,18 @@ const express = require("express");
 const app = express();
 const nodemailer = require("nodemailer");
 
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+app.get("/", (req, res) => {
+  res.render("index");
+  //   console.log(req.query);
+
+  //   res.send(
+  //     `Hello Apakabar ${req.query.username} password anda adalah ${req.query.password}`
+  //   );
+});
+
 function getHandlerRequest(req, res) {
   res.send("Apakabar!");
 }
@@ -9,14 +21,6 @@ function getHandlerRequest(req, res) {
 app.get("/username/:id([0-9]+)", (req, res) => {
   let username = req.params.id;
   res.send("Hello Apakabar " + username + "!");
-});
-
-app.get("/", (req, res) => {
-  console.log(req.query);
-
-  res.send(
-    `Hello Apakabar ${req.query.username} password anda adalah ${req.query.password}`
-  );
 });
 
 app.get("/contactus", (req, res) => {
