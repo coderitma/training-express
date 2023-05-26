@@ -6,7 +6,11 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("pages/index");
+});
+
+app.get("/about", (req, res) => {
+  res.render("pages/about");
 });
 
 app.listen(9999, () => {
