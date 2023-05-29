@@ -1,3 +1,5 @@
+const ModelUser = require("../models/ModelUser");
+
 const ControllerUser = require("express").Router();
 
 ControllerUser.get("/", (req, res) => {
@@ -12,6 +14,19 @@ ControllerUser.get("/yanzen", (req, res) => {
     username: "yanzenoid",
     email: "yanzenoid@doremi.com",
   });
+});
+
+ControllerUser.post("/", async (req, res) => {
+  const payload = req.body;
+
+  const result = await ModelUser.create(
+    payload.firstName,
+    payload.lastName,
+    payload.email,
+    payload.password
+  );
+
+  return res.status(201).json(result);
 });
 
 module.exports = ControllerUser;
