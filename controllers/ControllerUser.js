@@ -29,4 +29,13 @@ ControllerUser.post("/", async (req, res) => {
   return res.status(201).json(result);
 });
 
+ControllerUser.put("/:email", async (req, res) => {
+  const result = await ModelUser.edit(
+    req.body.firstName,
+    req.body.lastName,
+    req.params.email
+  );
+  return res.status(200).json(result);
+});
+
 module.exports = ControllerUser;
